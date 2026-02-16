@@ -10,9 +10,11 @@
 <div class="calculator">
    <h1>Flask Calculator</h1>
    <form method="POST">
+      <!-- readonly empêche la saisie manuelle : l'utilisateur doit utiliser les boutons pour garantir un format valide. -->
       <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
       <div class="buttons">
+         <!-- type="button" empêche la soumission automatique du formulaire lors du clic. -->
          <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
          <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
          <button type="button" class="btn" onclick="appendToDisplay('3')">3</button>
@@ -30,6 +32,7 @@
 
          <button type="button" class="btn" onclick="appendToDisplay('0')">0</button>
          <button type="button" class="btn" onclick="clearDisplay()">C</button>
+         <!-- type="submit" déclenche l'envoi du formulaire au serveur pour le calcul. -->
          <button type="submit" class="btn operator">=</button>
          <button type="button" class="btn operator" onclick="appendToDisplay('/')"></button>
       </div>
@@ -37,11 +40,22 @@
 </div>
 
 <script>
+   /**
+    * Ajoute une valeur au champ d'affichage de la calculatrice.
+    * 
+    * @param {string} value - La valeur (chiffre ou opérateur) à ajouter à l'affichage.
+    * @returns {void}
+    */
    function appendToDisplay(value) {
       const display = document.getElementById('display');
       display.value += value;
    }
 
+   /**
+    * Efface le contenu du champ d'affichage de la calculatrice.
+    * 
+    * @returns {void}
+    */
    function clearDisplay() {
       document.getElementById('display').value = '';
    }
