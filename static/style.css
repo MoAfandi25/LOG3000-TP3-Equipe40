@@ -1,6 +1,7 @@
 body {
    font-family: Arial, sans-serif;
    background-color: #f0f0f0;
+   /* Centrer la calculatrice verticalement et horizontalement sur la page. */
    display: flex;
    justify-content: center;
    align-items: center;
@@ -28,6 +29,7 @@ h1 {
    width: 100%;
    height: 80px;
    font-size: 36px;
+   /* Aligner les nombres à droite comme sur une calculatrice réelle. */
    text-align: right;
    padding: 15px;
    margin-bottom: 20px;
@@ -39,6 +41,7 @@ h1 {
 
 .buttons {
    display: grid;
+   /* Grille de 4 colonnes égales pour organiser les boutons en rangées. */
    grid-template-columns: repeat(4, 1fr);
    gap: 15px;
 }
@@ -52,6 +55,7 @@ h1 {
    background-color: #666;
    color: #fff;
    cursor: pointer;
+   /* Animation fluide au survol pour améliorer le feedback visuel. */
    transition: background-color 0.2s;
 }
 
