@@ -1,61 +1,187 @@
-# LOG3000 – TP3 – Calculatrice Web
+# LOG3000 - TP3 - Équipe 40
 
-## Numéro d’équipe
-Équipe 40
+## Description du projet
 
-## Nom du projet
-Calculatrice Web Flask
+### But
 
-## Objectif du projet
-Ce projet consiste en une application web de calculatrice simple développée avec Flask.
-L’objectif est de permettre aux utilisateurs d’effectuer des opérations mathématiques
-de base à travers une interface web.
+Flask Calculator est une application web de calculatrice développée dans le cadre du cours LOG3000. Elle permet d'effectuer des opérations mathématiques basiques (addition, soustraction, multiplication, division) via une interface web simple et intuitive.
 
-## Prérequis d’installation
-- Python 3.10 ou plus récent
-- pip
-- Git
-- Navigateur web moderne
+### Portée
 
-## Instructions d’installation
+L'application prend en charge :
 
-1. Cloner le dépôt :
-git clone https://github.com/MoAfandi25/LOG3000-TP3-Equipe40.git
+- **Opérations supportées** : addition (+), soustraction (-), multiplication (*), division (/)
+- **Format des expressions** : une expression par calcul, au format `nombre1 opérateur nombre2`
+- **Interface** : calculatrice visuelle avec boutons et affichage du résultat
+- **Validation** : gestion des erreurs (expression invalide, opérateurs multiples, opérandes non numériques)
 
-2. Accéder au dossier du projet :
-cd LOG3000-TP3-Equipe40
+**Limitations actuelles** : une seule opération binaire par expression ; pas de chaînage d’opérations ni de calculs plus complexes.
 
-3. Installer les dépendances :
-pip install flask
+---
 
-4. Lancer l’application :
-python app.py
+## Installation
 
-5. Ouvrir un navigateur et accéder à :
-http://127.0.0.1:5000
+### Prérequis
+
+- **Python 3.7 ou supérieur**  
+  Vérification :
+  ```bash
+  python --version
+  # ou
+  python3 --version
+  ```
+- **pip** (gestionnaire de paquets Python)
+
+### Étapes d’installation
+
+1. **Cloner le dépôt**
+   ```bash
+   git clone <url-du-depot>
+   cd TP3---LOG3000-main
+   ```
+
+2. **Créer un environnement virtuel (recommandé)**
+   ```bash
+   python -m venv venv
+   ```
+   - **Windows** :
+     ```bash
+     venv\Scripts\activate
+     ```
+   - **Linux / macOS** :
+     ```bash
+     source venv/bin/activate
+     ```
+
+3. **Installer les dépendances**
+   ```bash
+   pip install flask
+   ```
+
+4. **Optionnel : créer un `requirements.txt`**  
+   Pour faciliter les prochaines installations :
+   ```bash
+   pip freeze > requirements.txt
+   ```
+   Puis, sur un autre environnement :
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Utilisation
+
+### Lancer l’application
+
+1. Depuis la racine du projet (avec l’environnement virtuel activé si nécessaire) :
+   ```bash
+   python app.py
+   ```
+
+2. Ouvrir un navigateur et aller à :
+   ```
+   http://127.0.0.1:5000
+   ```
+
+3. La calculatrice s’affiche et est prête à l’emploi.
+
+### Utiliser la calculatrice
+
+1. **Composer une expression**  
+   Utiliser les boutons 0–9 et +, -, *, / pour former une expression du type `5 + 3` ou `10 - 2`.
+
+2. **Obtenir le résultat**  
+   Cliquer sur le bouton `=` pour envoyer l’expression au serveur et afficher le résultat.
+
+3. **Effacer l’écran**  
+   Cliquer sur `C` pour vider l’affichage et saisir une nouvelle expression.
+
+4. **En cas d’erreur**  
+   Un message du type `Error: ...` s’affiche si l’expression est invalide (plusieurs opérateurs, opérateur mal placé, opérandes non numériques, etc.).
+
+### Exemples d’expressions valides
+
+- `2 + 3`
+- `10 - 4`
+- `5 * 2`
+- `8 / 2`
+
+---
 
 ## Tests
 
-Des tests unitaires et d'intégration sont fournis pour valider le fonctionnement de la calculatrice.
+Les tests seront ajoutés dans une phase ultérieure. Une fois en place :
 
-- `test_operators.py` : teste les fonctions de base (add, subtract, multiply, divide).
-- `test_app.py` : teste la logique de parsing/calcul et l'application Flask.
-
-Pour exécuter les tests :
+### Lancer tous les tests (pytest)
 
 ```bash
-pip install pytest
 pytest
 ```
 
-## Problèmes/Bugs connus
+### Lancer les tests avec couverture
 
-- La soustraction est inversée (`subtract(a, b)` retourne `b - a`)
-- La multiplication est en fait une puissance (`multiply(a, b)` retourne `a ** b`)
-- La division est une division entière (`divide(a, b)` retourne `a // b`)
-- Les nombres négatifs ne sont pas supportés dans les expressions
-- Après une erreur, il faut vider manuellement le champ de saisie
-- Les erreurs ne sont pas différenciées (toujours ValueError)
-- L'utilisateur ne peut pas entrer plusieurs opérations (pas de support pour des expressions plus complexes)
+```bash
+pytest --cov=.
+```
 
-Voir les fichiers de test pour plus de détails sur la couverture et les cas limites.
+### Lancer les tests (unittest)
+
+Si le projet utilise `unittest` plutôt que `pytest` :
+
+```bash
+python -m unittest discover -v
+```
+
+---
+
+## Structure du projet
+
+```
+TP3---LOG3000-main/
+├── app.py              # Point d'entrée Flask, routes, logique de calcul
+├── operators.py        # Fonctions mathématiques (add, subtract, multiply, divide)
+├── static/
+│   ├── style.css       # Styles de l’interface
+│   └── README.md       # Documentation du module static
+├── templates/
+│   ├── index.html      # Page principale de la calculatrice
+│   └── README.md       # Documentation du module templates
+├── ROOT_MODULE.md      # Documentation du module racine
+└── README.md           # Ce fichier
+```
+
+---
+
+## Contribution
+
+### Flux de travail (branches, PR, issues)
+
+1. **Issues**  
+   Ouvrir une issue pour signaler un bug ou proposer une fonctionnalité.
+
+2. **Branches**
+   - Créer une branche depuis `main` :
+     ```bash
+     git checkout -b feature/ma-fonctionnalite
+     # ou
+     git checkout -b fix/correction-bug
+     ```
+   - Convention de nommage : `feature/`, `fix/`, `docs/`, etc.
+
+3. **Pull requests**
+   - Commiter et pousser votre branche vers le dépôt distant.
+   - Ouvrir une Pull Request vers `main`.
+   - Décrire les changements et lier les issues concernées.
+   - Attendre la revue et la validation.
+
+4. **Conventions**
+   - Messages de commit clairs et explicites.
+   - Mettre à jour la documentation si nécessaire.
+   - Assurer que les tests passent avant de merger.
+
+---
+
+## Licence et crédits
+
+Projet réalisé dans le cadre du cours LOG3000 - Polytechnique Montréal.
