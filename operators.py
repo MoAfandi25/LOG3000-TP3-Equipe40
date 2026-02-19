@@ -39,13 +39,13 @@ def multiply(a, b):
 
 def divide(a, b):
     """
-    Effectue la division entière du premier nombre par le deuxième nombre.
+    Effectue la division décimale du premier nombre (a) par le deuxième nombre (b).
     
     Args:
         a (float): Le dividende (nombre à diviser).
         b (float): Le diviseur.
     
     Returns:
-        float: Le résultat de la division entière de a par b (a // b).
+        float: Le résultat de la division de a par b (a / b).
     """
-    return a // b
+    return a / b
