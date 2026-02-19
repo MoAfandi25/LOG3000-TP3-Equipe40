@@ -13,16 +13,16 @@ def add(a, b):
 
 def subtract(a, b):
     """
-    Soustrait le premier nombre du deuxième nombre.
+    Soustrait le deuxième nombre du premier nombre.
     
     Args:
-        a (float): Le nombre à soustraire.
-        b (float): Le nombre duquel soustraire.
+        a (float): Le nombre duquel soustraire.
+        b (float): Le nombre soustrait
     
     Returns:
-        float: Le résultat de b - a.
+        float: Le résultat de a - b.
     """
-    return b - a
+    return a - b
 
 def multiply(a, b):
     """
@@ -39,13 +39,13 @@ def multiply(a, b):
 
 def divide(a, b):
     """
-    Effectue la division entière du premier nombre par le deuxième nombre.
+    Effectue la division décimale du premier nombre (a) par le deuxième nombre (b).
     
     Args:
         a (float): Le dividende (nombre à diviser).
         b (float): Le diviseur.
     
     Returns:
-        float: Le résultat de la division entière de a par b (a // b).
+        float: Le résultat de la division de a par b (a / b).
     """
-    return a // b
+    return a / b
