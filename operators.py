@@ -26,16 +26,16 @@ def subtract(a, b):
 
 def multiply(a, b):
     """
-    Élève le premier nombre à la puissance du deuxième nombre.
+    Mutliplie a par b
     
     Args:
-        a (float): La base.
-        b (float): L'exposant.
+        a (float): Premier facteur
+        b (float): Second facteur
     
     Returns:
-        float: Le résultat de a élevé à la puissance b (a ** b).
+        float: Le résultat de la multiplication de a par b
     """
-    return a ** b
+    return a * b
 
 def divide(a, b):
     """
