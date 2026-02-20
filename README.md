@@ -8,14 +8,14 @@ Flask Calculator est une application web de calculatrice développée dans le ca
 
 ### Portée
 
-L'application prend en charge :
+L'application prend en charge :
 
 - **Opérations supportées** : addition (+), soustraction (-), multiplication (*), division (/)
 - **Format des expressions** : une expression par calcul, au format `nombre1 opérateur nombre2`
 - **Interface** : calculatrice visuelle avec boutons et affichage du résultat
 - **Validation** : gestion des erreurs (expression invalide, opérateurs multiples, opérandes non numériques)
 
-**Limitations actuelles** : une seule opération binaire par expression ; pas de chaînage d’opérations ni de calculs plus complexes.
+**Limitations actuelles** : une seule opération binaire par expression ; pas de chaînage d'opérations ni de calculs plus complexes.
 
 ---
 
@@ -32,7 +32,7 @@ L'application prend en charge :
   ```
 - **pip** (gestionnaire de paquets Python)
 
-### Étapes d’installation
+### Étapes d'installation
 
 1. **Cloner le dépôt**
    ```bash
@@ -72,9 +72,9 @@ L'application prend en charge :
 
 ## Utilisation
 
-### Lancer l’application
+### Lancer l'application
 
-1. Depuis la racine du projet (avec l’environnement virtuel activé si nécessaire) :
+1. Depuis la racine du projet (avec l'environnement virtuel activé si nécessaire) :
    ```bash
    python app.py
    ```
@@ -84,7 +84,7 @@ L'application prend en charge :
    http://127.0.0.1:5000
    ```
 
-3. La calculatrice s’affiche et est prête à l’emploi.
+3. La calculatrice s'affiche et est prête à l'emploi.
 
 ### Utiliser la calculatrice
 
@@ -92,15 +92,15 @@ L'application prend en charge :
    Utiliser les boutons 0–9 et +, -, *, / pour former une expression du type `5 + 3` ou `10 - 2`.
 
 2. **Obtenir le résultat**  
-   Cliquer sur le bouton `=` pour envoyer l’expression au serveur et afficher le résultat.
+   Cliquer sur le bouton `=` pour envoyer l'expression au serveur et afficher le résultat.
 
-3. **Effacer l’écran**  
-   Cliquer sur `C` pour vider l’affichage et saisir une nouvelle expression.
+3. **Effacer l'écran**  
+   Cliquer sur `C` pour vider l'affichage et saisir une nouvelle expression.
 
-4. **En cas d’erreur**  
-   Un message du type `Error: ...` s’affiche si l’expression est invalide (plusieurs opérateurs, opérateur mal placé, opérandes non numériques, etc.).
+4. **En cas d'erreur**  
+   Un message du type `Error: ...` s'affiche si l'expression est invalide (plusieurs opérateurs, opérateur mal placé, opérandes non numériques, etc.).
 
-### Exemples d’expressions valides
+### Exemples d'expressions valides
 
 - `2 + 3`
 - `10 - 4`
@@ -111,27 +111,45 @@ L'application prend en charge :
 
 ## Tests
 
-Les tests seront ajoutés dans une phase ultérieure. Une fois en place :
+Le projet inclut une suite complète de tests unitaires et d'intégration dans le répertoire `tests/`.
 
-### Lancer tous les tests (pytest)
+### Prérequis pour les tests
+
+```bash
+pip install pytest
+```
+
+### Lancer tous les tests
 
 ```bash
 pytest
 ```
 
+### Lancer avec verbosité
+
+```bash
+pytest -v
+```
+
+### Lancer un fichier de test spécifique
+
+```bash
+pytest tests/test_operators.py
+pytest tests/test_app.py
+```
+
 ### Lancer les tests avec couverture
 
 ```bash
-pytest --cov=.
+pytest --cov=. --cov-report=html
 ```
 
-### Lancer les tests (unittest)
+### Structure des tests
 
-Si le projet utilise `unittest` plutôt que `pytest` :
+- **`tests/test_operators.py`** : Tests unitaires pour les fonctions mathématiques (add, subtract, multiply, divide)
+- **`tests/test_app.py`** : Tests d'intégration pour l'application Flask (routes HTTP, fonction calculate)
 
-```bash
-python -m unittest discover -v
-```
+Pour plus de détails, consultez `tests/README.md`.
 
 ---
 
@@ -142,11 +160,15 @@ TP3---LOG3000-main/
 ├── app.py              # Point d'entrée Flask, routes, logique de calcul
 ├── operators.py        # Fonctions mathématiques (add, subtract, multiply, divide)
 ├── static/
-│   ├── style.css       # Styles de l’interface
+│   ├── style.css       # Styles de l'interface
 │   └── README.md       # Documentation du module static
 ├── templates/
 │   ├── index.html      # Page principale de la calculatrice
 │   └── README.md       # Documentation du module templates
+├── tests/
+│   ├── test_operators.py  # Tests unitaires pour operators.py
+│   ├── test_app.py       # Tests d'intégration pour app.py
+│   └── README.md         # Documentation du module tests
 ├── ROOT_MODULE.md      # Documentation du module racine
 └── README.md           # Ce fichier
 ```

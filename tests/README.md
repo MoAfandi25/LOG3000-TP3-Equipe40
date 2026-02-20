@@ -12,12 +12,13 @@ Le module `tests/` contient tous les tests unitaires et d'intégration de l'appl
 **Fonctions testées** :
 - `add(a, b)` : Tests avec entiers positifs, négatifs, décimaux, zéro
 - `subtract(a, b)` : Tests avec différents types de nombres et cas limites
-- `multiply(a, b)` : Tests de l'exponentiation (a ** b) avec différents scénarios
-- `divide(a, b)` : Tests de la division entière (a // b) avec cas normaux et limites
+- `multiply(a, b)` : Tests de la multiplication (a * b) avec différents scénarios
+- `divide(a, b)` : Tests de la division décimale (a / b) avec cas normaux et limites, y compris ZeroDivisionError
 
 **Couverture** :
 - Cas nominaux (nombres positifs)
 - Cas limites (nombres négatifs, zéro, décimaux)
+- Gestion des erreurs (ZeroDivisionError pour divide)
 - Vérification des résultats attendus pour chaque opération
 
 ### `test_app.py`
@@ -37,9 +38,11 @@ Le module `tests/` contient tous les tests unitaires et d'intégration de l'appl
   - POST `/` : Expression invalide → `result = f"Error: {e}"`
 
 **Tests Flask** :
-- Utilise le client de test Flask pour simuler les requêtes HTTP
-- Vérifie les codes de statut HTTP
+- Utilise le client de test Flask (fixture `client`) pour simuler les requêtes HTTP
+- Vérifie les codes de statut HTTP (200 pour succès)
 - Vérifie le contenu des réponses HTML
+- Utilise des mocks pour isoler les tests (mock de `operators`, `calculate`, `render_template`)
+- Utilise `@pytest.mark.parametrize` pour tester plusieurs cas avec une seule fonction de test
 
 ## Dépendances
 
